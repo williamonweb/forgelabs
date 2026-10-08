@@ -154,10 +154,13 @@ export default async function Home() {
         <div className="project-showcase">
           {homeProjects.map((project) => {
             return (
-              <Link
-                href={`/projetos/${project.slug}`}
+              <a
+                href={project.website ?? `/projetos/${project.slug}`}
+                target={project.website ? "_blank" : undefined}
+                rel={project.website ? "noopener noreferrer" : undefined}
                 className={`showcase-card showcase-${project.slug}`}
                 key={project.slug}
+                aria-label={project.website ? `Abrir site oficial de ${project.name}` : `Ver projeto ${project.name}`}
               >
                 <div className="showcase-preview">
                   <div className="preview-browser">
@@ -186,7 +189,7 @@ export default async function Home() {
                   <div><h3>{project.name}</h3><p>{project.summary}</p></div>
                   <ArrowUpRight />
                 </div>
-              </Link>
+              </a>
             );
           })}
         </div>

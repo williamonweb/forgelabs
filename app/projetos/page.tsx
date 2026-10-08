@@ -29,7 +29,7 @@ export default async function ProjectsPage() {
             key={project.slug}
             style={{ "--case-color": project.color } as React.CSSProperties}
           >
-            <Link className="project-route-preview" href={`/projetos/${project.slug}`} aria-label={`Ver case ${project.name}`}>
+            <a className="project-route-preview" href={project.website ?? `/projetos/${project.slug}`} target={project.website ? "_blank" : undefined} rel={project.website ? "noopener noreferrer" : undefined} aria-label={project.website ? `Abrir site oficial de ${project.name}` : `Ver projeto ${project.name}`}>
               {project.image ? (
                 <div className="site-browser-frame">
                   <div className="site-browser-bar">
@@ -50,7 +50,7 @@ export default async function ProjectsPage() {
                   <i />
                 </div>
               )}
-            </Link>
+            </a>
             <div className="project-route-meta">
               <span>{project.index}</span>
               <p>{project.category}</p>

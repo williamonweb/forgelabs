@@ -6,8 +6,8 @@ Site institucional da Forge Labs pronto para GitHub e Vercel, sem CMS, banco de 
 
 - Home, Serviços, Projetos, Sobre, Contato, FAQ, Termos e Privacidade.
 - Página individual automática para cada projeto em `/projetos/[slug]`.
-- Links externos para abrir os sites publicados.
-- Imagens locais para as capturas dos projetos.
+- Cards e imagens dos projetos publicados abrem os domínios oficiais em uma nova aba. O botão “Ver projeto” abre o case dentro da Forge Labs.
+- Imagens locais em `public/projects` com capturas atuais das páginas oficiais. Substitua esses arquivos quando o visual dos sites mudar.
 - Conteúdo dos projetos em um único arquivo: `lib/site-data.ts`.
 
 ## Rodar no computador
