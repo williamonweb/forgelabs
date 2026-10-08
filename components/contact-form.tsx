@@ -19,7 +19,7 @@ export function ContactForm() {
     ].join("\n");
 
     setSent(true);
-    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/5551985845457?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
   };
 
   return (
