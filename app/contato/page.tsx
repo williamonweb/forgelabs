@@ -1,11 +1,35 @@
-import type { Metadata } from "next";
-import ContactForm from "./ContactForm";
+import { Clock3, MapPin, MessageCircle } from "lucide-react";
+import { ContactForm } from "@/components/contact-form";
+import { PageHero } from "@/components/page-hero";
 
-export const metadata: Metadata = { title: "Contato | Forge Labs", description: "Conte sua ideia para a Forge Labs e solicite uma proposta para seu projeto digital." };
+export const metadata = {
+  title: "Contato — Forge Labs",
+  description: "Conte sua ideia e inicie um novo projeto com a Forge Labs.",
+};
 
-export default function Contato() {
-  return <main>
-    <section className="page-hero contact-hero shell" data-reveal><p className="eyebrow"><i/> Comece seu projeto</p><h1>Conte a ideia.<br/><em>Nós acendemos a forja.</em></h1><p>Responda algumas informações rápidas. Ao enviar, sua mensagem será preparada para continuar pelo WhatsApp.</p></section>
-    <section className="contact-layout shell"><div data-reveal><p className="eyebrow"><i/> Fale com a gente</p><h2>Qual será nossa<br/>próxima criação?</h2><p>Mesmo que sua ideia ainda não esteja totalmente pronta, pode mandar. Ajudamos a organizar as possibilidades e encontrar o melhor caminho.</p><div className="contact-note"><span>01</span><p>Você conta a necessidade</p><span>02</span><p>Nós avaliamos a melhor solução</p><span>03</span><p>Você recebe uma proposta clara</p></div></div><div data-reveal><ContactForm/></div></section>
-  </main>;
+export default function ContactPage() {
+  return (
+    <main className="inner-page">
+      <PageHero
+        index="04"
+        eyebrow="Iniciar projeto"
+        title="Conte o problema."
+        highlight=" A gente pensa na solução."
+        description="Você não precisa chegar com tudo definido. Explique a ideia, a rotina ou o ponto que precisa melhorar — começamos a partir daí."
+      />
+
+      <section className="contact-route">
+        <aside>
+          <p className="section-kicker">Conversa direta</p>
+          <h2>Sem formulário infinito. Sem resposta genérica.</h2>
+          <div className="contact-facts">
+            <span><MessageCircle /><strong>Primeiro contato</strong>Briefing preparado no WhatsApp</span>
+            <span><Clock3 /><strong>Retorno</strong>Assim que analisarmos o contexto</span>
+            <span><MapPin /><strong>Base</strong>Gravataí · Rio Grande do Sul</span>
+          </div>
+        </aside>
+        <ContactForm />
+      </section>
+    </main>
+  );
 }

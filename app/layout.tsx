@@ -1,25 +1,35 @@
 import type { Metadata } from "next";
-import { SiteFooter, SiteHeader } from "@/components/site-chrome";
-import MotionEnhancer from "@/components/motion-enhancer";
+import { CursorGlow } from "@/components/cursor-glow";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Forge Labs | Sites e Sistemas Sob Medida",
-  description: "Criamos sites profissionais, lojas virtuais e sistemas sob medida para transformar ideias em negócios digitais.",
+  title: "Forge Labs — Tecnologia forjada para resolver",
+  description:
+    "Sites, sistemas, automações e produtos digitais construídos para resolver problemas reais.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR">
-      <body className="antialiased"><MotionEnhancer/><SiteHeader/>{children}<SiteFooter/></body>
+      <body>
+        <a className="skip-link" href="#conteudo-principal">
+          Pular para o conteúdo
+        </a>
+        <CursorGlow />
+        <SiteHeader />
+        <div id="conteudo-principal" tabIndex={-1}>
+          {children}
+        </div>
+        <SiteFooter />
+      </body>
     </html>
   );
 }

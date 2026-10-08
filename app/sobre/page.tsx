@@ -1,15 +1,69 @@
-import type { CSSProperties } from "react";
-import type { Metadata } from "next";
+import { ArrowUpRight, Fingerprint, Focus, Hammer, RefreshCw } from "lucide-react";
 import Link from "next/link";
+import { PageHero } from "@/components/page-hero";
+import { processSteps } from "@/lib/site-data";
 
-export const metadata: Metadata = { title: "Sobre | Forge Labs", description: "Conheça a Forge Labs e nosso jeito de transformar necessidades reais em soluções digitais." };
-const values = [["01", "Proximidade", "Você fala com quem pensa e constrói o projeto."], ["02", "Clareza", "Processo transparente, comunicação direta e decisões explicadas."], ["03", "Identidade", "Cada solução nasce com a personalidade do negócio."], ["04", "Evolução", "Construímos para crescer junto, não para ficar parado."]];
+export const metadata = {
+  title: "Sobre — Forge Labs",
+  description: "A história, o propósito e a forma de trabalhar da Forge Labs.",
+};
 
-export default function Sobre() {
-  return <main>
-    <section className="page-hero shell" data-reveal><p className="eyebrow"><i/> Quem somos</p><h1>Não fabricamos páginas.<br/><em>Forjamos possibilidades.</em></h1><p>A Forge Labs une estratégia, design e tecnologia para transformar ideias em ferramentas digitais úteis, fortes e memoráveis.</p></section>
-    <section className="story shell" data-reveal><div className="story-emblem"><img src="/forge-story.webp" alt="Bancada de criação da Forge Labs"/><div className="story-badge"><img src="/forge-labs-logo.png" alt="Brasão Forge Labs"/></div></div><div className="story-copy"><span>Nossa essência</span><h2>Nascemos da necessidade de criar melhor.</h2><p>A Forge surgiu construindo soluções para problemas que vivíamos de perto. Foi assim que aprendemos que um bom sistema não precisa ser complicado — precisa entender quem vai usá-lo.</p><p>Essa proximidade continua guiando cada projeto. Ouvimos antes de desenhar, questionamos antes de programar e entregamos somente quando a solução realmente faz sentido.</p><blockquote>“Tecnologia forte é aquela que simplifica a vida sem perder a personalidade.”</blockquote></div></section>
-    <section className="values shell">{values.map((value, index) => <article key={value[0]} data-reveal style={{ "--delay": `${index * 80}ms` } as CSSProperties}><span>{value[0]}</span><h3>{value[1]}</h3><p>{value[2]}</p></article>)}</section>
-    <section className="contact shell" data-reveal><div><p className="eyebrow"><i/> Vamos conversar</p><h2>Tem uma ideia<br/><em>martelando por aí?</em></h2></div><Link className="contact-button" href="/contato">Conte para nós <span>↗</span></Link></section>
-  </main>;
+export default function AboutPage() {
+  return (
+    <main className="inner-page">
+      <PageHero
+        index="03"
+        eyebrow="Sobre a Forge"
+        title="Tecnologia feita"
+        highlight=" para ser útil."
+        description="A Forge Labs nasceu da vontade de construir ferramentas digitais que resolvem problemas de verdade — com proximidade, identidade e espaço para evoluir."
+      />
+
+      <section className="about-origin">
+        <div className="origin-mark"><Hammer /></div>
+        <div>
+          <p className="section-kicker">A origem</p>
+          <h2>Antes de existir uma empresa, existiam problemas pedindo solução.</h2>
+        </div>
+        <div className="origin-copy">
+          <p>
+            A Forge nasceu na prática: observando rotinas, identificando gargalos
+            e construindo sistemas que tornassem o trabalho mais simples.
+          </p>
+          <p>
+            William Ribeiro Gomes criou a marca para reunir sites, sistemas e
+            produtos digitais sob uma mesma ideia: tecnologia próxima de quem usa.
+          </p>
+        </div>
+      </section>
+
+      <section className="principles">
+        <article><span>01</span><Focus /><h3>Clareza antes da complexidade</h3><p>A solução precisa ser entendida por quem vai usar, não apenas por quem desenvolve.</p></article>
+        <article><span>02</span><Fingerprint /><h3>Identidade antes do template</h3><p>Cada negócio tem uma história e uma necessidade. O projeto deve refletir isso.</p></article>
+        <article><span>03</span><RefreshCw /><h3>Evolução antes do abandono</h3><p>Uma boa base continua útil, recebe melhorias e acompanha o crescimento.</p></article>
+      </section>
+
+      <section className="process-route">
+        <div className="process-route-head">
+          <p className="section-kicker">Nosso processo</p>
+          <h2>Você sabe o que está acontecendo em cada etapa.</h2>
+        </div>
+        <ol>
+          {processSteps.map((step) => (
+            <li key={step.number}>
+              <span>{step.number}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="route-cta">
+        <Hammer />
+        <div><p className="section-kicker">Próximo projeto</p><h2>Tem uma ideia que precisa ganhar forma?</h2></div>
+        <Link href="/contato">Conversar com a Forge <ArrowUpRight /></Link>
+      </section>
+    </main>
+  );
 }
